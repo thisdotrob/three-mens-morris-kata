@@ -1,14 +1,27 @@
 (ns game.core
-  (:require [reagent.core :as reagent]))
+  (:require [re-frame.core :as rf]
+            [reagent.core :as reagent]))
 
-(defn board []
-  [:div
-   [:p
-    [:span "o"][:span " "][:span "o"][:span " "][:span "o"]]
-   [:p
-    [:span "o"][:span " "][:span "o"][:span " "][:span "o"]]
-   [:p
-    [:span "o"][:span " "][:span "o"][:span " "][:span "o"]]])
+(rf/reg-event-db
+  :init
+  (fn [_ _] {:board [:o :o :o :o :o :o :o :o :o]}))
+
+(rf/reg-sub
+  :board
+  (fn [db _] (:board db)))
+
+(defn board-view []
+  (let [[top-left top top-right
+         mid-left mid mid-right
+         bot-left bot bot-right] (map name @(rf/subscribe [:board]))]
+    [:div
+     [:p
+      [:span top-left][:span " "][:span top][:span " "][:span top-right]]
+     [:p
+      [:span mid-left][:span " "][:span mid][:span " "][:span mid-right]]
+     [:p
+      [:span bot-left][:span " "][:span bot][:span " "][:span bot-right]]]))
 
 (defn ^:export init []
-  (reagent/render [board] (js/document.getElementById "app")))
+  (rf/dispatch-sync [:init])
+  (reagent/render [board-view] (js/document.getElementById "app")))
