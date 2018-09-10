@@ -6,16 +6,16 @@
                 [bidi "2.1.3"]
                 [kibu/pushy "0.3.8"]]
 
- :builds {:app {:modules {:main {:entries [game.core]}}
-                :target :browser
-                :output-dir "public/js"
-                :assest-path "/js"
+ :builds {:game {:modules {:main {:entries [game.core]}}
+                 :target :browser
+                 :output-dir "public/js"
+                 :assest-path "/js"
 
-                :compiler-options
-                {:closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}}
+                 :compiler-options
+                 {:closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}}
 
-                :devtools {:http-root "public"
-                           :http-port 8020
-                           :preloads [devtools.preload
-                                      day8.re-frame-10x.preload]}
-                :release {:output-dir "dist/js"}}}}
+                 :devtools {:http-root "public"
+                            :http-port 8030
+                            :preloads [devtools.preload
+                                       day8.re-frame-10x.preload]}
+                 :release {:output-dir "dist/js"}}}}

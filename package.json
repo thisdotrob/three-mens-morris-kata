@@ -1,0 +1,30 @@
+{
+  "name": "three-mens-morris",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thisdotrob/three-mens-morris.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "shadow-start": "shadow-cljs server start",
+    "start": "shadow-cljs watch game",
+    "test": "shadow-cljs watch test",
+    "release": "shadow-cljs release game"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.3",
+    "shadow-cljs": "^2.4.24"
+  },
+  "dependencies": {
+    "create-react-class": "^15.6.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-flip-move": "^3.0.2",
+    "react-highlight.js": "^1.0.7"
+  }
+}
